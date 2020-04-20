@@ -27,7 +27,9 @@ export default ResultsList;
 
 const styles = StyleSheet.create({
   title: {
+    marginLeft: 15,
     fontSize: 18,
     fontWeight: "bold",
+    marginVertical: 12,
   },
 });
