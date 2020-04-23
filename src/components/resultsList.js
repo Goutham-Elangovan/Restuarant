@@ -1,8 +1,15 @@
 import React from "react";
-import { Text, View, StyleSheet, FlatList } from "react-native";
+import {
+  Text,
+  View,
+  StyleSheet,
+  FlatList,
+  TouchableOpacity,
+} from "react-native";
 import ResultsView from "../components/resultsView";
+import { NavigationEvents } from "react-navigation";
 
-const ResultsList = ({ title, results }) => {
+const ResultsList = ({ title, results, navigation }) => {
   return (
     <View>
       <Text style={styles.title}>{title}</Text>
@@ -13,7 +20,13 @@ const ResultsList = ({ title, results }) => {
         data={results}
         renderItem={({ item }) => {
           /*"item" is basically each result from the api. You need to use only "item". Its a convention */
-          return <ResultsView result={item} />;
+          return (
+            <TouchableOpacity
+              onPress={() => navigation.navigate("ShowResultsScreen")}
+            >
+              <ResultsView result={item} />
+            </TouchableOpacity>
+          );
         }}
         keyExtractor={(forEachResult) =>
           forEachResult.id

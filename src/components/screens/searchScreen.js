@@ -4,7 +4,7 @@ import SearchBar from "../searchBar";
 import useResults from "../../hooks/useResults";
 import ResultsList from "../resultsList";
 
-const SearchScreen = () => {
+const SearchScreen = ({ navigation }) => {
   const [userInput, setUserInput] = useState("");
   const [searchApi, errorMessage, results] = useResults();
 
@@ -16,7 +16,7 @@ const SearchScreen = () => {
 
   //console.log(results);
 
-  //Calling searchApi when component is rendered first time
+  //Calling searchApi when component is rendered for the first time
   //searchApi('pasta') - This will work but since the state changes, the component re
   //renders in an infinite loop. Try console.log("hi") in searchApi function to reproduce it!
   return (
@@ -28,19 +28,26 @@ const SearchScreen = () => {
           onUserInputSubmit={() => searchApi(userInput)}
         />
         {errorMessage ? <Text>{errorMessage}</Text> : <Text>{userInput}</Text>}
-        <Text>We have found {results.length} results</Text>
+        {/* <Text>We have found {results.length} results</Text> */}
         <ResultsList
           results={filterResultsByPrice("$")}
           title="Cost effective"
+          navigation={navigation}
         />
-        <ResultsList results={filterResultsByPrice("$$")} title="Bit pricier" />
+        <ResultsList
+          results={filterResultsByPrice("$$")}
+          title="Bit pricier"
+          navigation={navigation}
+        />
         <ResultsList
           results={filterResultsByPrice("$$$")}
           title="Big spender"
+          navigation={navigation}
         />
         <ResultsList
           results={filterResultsByPrice("$$$$")}
           title="Cant even think of it"
+          navigation={navigation}
         />
       </View>
     </ScrollView>

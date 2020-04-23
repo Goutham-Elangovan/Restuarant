@@ -31,6 +31,7 @@ const styles = StyleSheet.create({
     height: 30,
     marginHorizontal: 15,
     flexDirection: "row",
+    marginBottom: 10,
   },
 
   searchIcon: {
