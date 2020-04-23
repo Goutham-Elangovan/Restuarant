@@ -27,7 +27,7 @@ const SearchScreen = ({ navigation }) => {
           onUserInputChange={setUserInput}
           onUserInputSubmit={() => searchApi(userInput)}
         />
-        {errorMessage ? <Text>{errorMessage}</Text> : <Text>{userInput}</Text>}
+        {errorMessage ? <Text>{errorMessage}</Text> : null}
         {/* <Text>We have found {results.length} results</Text> */}
         <ResultsList
           results={filterResultsByPrice("$")}

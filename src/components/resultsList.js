@@ -22,7 +22,9 @@ const ResultsList = ({ title, results, navigation }) => {
           /*"item" is basically each result from the api. You need to use only "item". Its a convention */
           return (
             <TouchableOpacity
-              onPress={() => navigation.navigate("ShowResultsScreen")}
+              onPress={() =>
+                navigation.navigate("ShowResultsScreen", { id: item.id })
+              }
             >
               <ResultsView result={item} />
             </TouchableOpacity>
